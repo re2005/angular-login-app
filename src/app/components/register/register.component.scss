@@ -1,5 +1,27 @@
 :host {
     display: flex;
     justify-content: center;
-    margin: 100px 0;
+}
+
+.form-fields {
+
+    .is-loading & {
+        opacity: .4;
+    }
+}
+
+.spinner {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 100px;
+
+    mat-spinner {
+        position: relative;
+        left: -50%;
+    }
+
+    .is-loading & {
+        display: block;
+    }
 }

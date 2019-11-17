@@ -1,30 +1,36 @@
-<mat-card class="forms">
+<mat-card class="forms" [ngClass]="{'is-loading': loading}">
     <mat-card-title>Registration</mat-card-title>
     <mat-card-content>
         <form [formGroup]="registrationForm"
               (ngSubmit)="onSubmit()">
 
-            <mat-form-field>
-                <input type="text" matInput placeholder="Name" formControlName="name" minlength="8">
-                <div [hidden]="registrationForm.controls.name.valid">
+            <div class="spinner">
+                <mat-spinner></mat-spinner>
+            </div>
+
+            <div class="form-fields">
+                <mat-form-field>
+                    <input matInput placeholder="Name" formControlName="name" minlength="8">
+                </mat-form-field>
+                <div [hidden]="registrationForm.controls.name.valid || registrationForm.controls.name.pristine">
                     Invalid
                 </div>
-            </mat-form-field>
 
-            <mat-form-field>
-                <input type="text" matInput placeholder="Username" formControlName="username" minlength="8">
-                <div [hidden]="registrationForm.controls.username.valid">
-                    Invalid
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Username" formControlName="username" minlength="8">
+                    <div [hidden]="registrationForm.controls.username.valid">
+                        Invalid
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Password" formControlName="password">
+                </mat-form-field>
+                <div class="button">
+                    <button mat-button mat-raised-button color="primary" [disabled]="registrationForm.invalid">
+                        Login
+                    </button>
                 </div>
-            </mat-form-field>
-
-            <mat-form-field>
-                <input type="password" matInput placeholder="Password" formControlName="password">
-            </mat-form-field>
-            <div class="button">
-                <button mat-button mat-raised-button color="primary" [disabled]="registrationForm.invalid">
-                    Login
-                </button>
             </div>
 
         </form>

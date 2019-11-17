@@ -4,7 +4,7 @@
         <form [formGroup]="loginForm"
               (ngSubmit)="onSubmit()">
             <mat-form-field>
-                <input type="text" matInput placeholder="Username" formControlName="username" minlength="8">
+                <input matInput placeholder="Username" formControlName="username" minlength="8">
                 <div [hidden]="loginForm.controls.username.valid">
                     Invalid
                 </div>
