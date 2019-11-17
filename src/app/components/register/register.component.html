@@ -10,25 +10,33 @@
 
             <div class="form-fields">
                 <mat-form-field>
-                    <input matInput placeholder="Name" formControlName="name" minlength="8">
+                    <input matInput placeholder="Name" formControlName="name" minlength="6">
                 </mat-form-field>
-                <div [hidden]="registrationForm.controls.name.valid || registrationForm.controls.name.pristine">
-                    Invalid
+                <div class="invalid"
+                     [hidden]="registrationForm.controls.name.valid || registrationForm.controls.name.pristine">
+                    Invalid username
                 </div>
 
                 <mat-form-field>
-                    <input type="text" matInput placeholder="Username" formControlName="username" minlength="8">
-                    <div [hidden]="registrationForm.controls.username.valid">
-                        Invalid
-                    </div>
+                    <input type="email" matInput placeholder="Email" formControlName="username">
                 </mat-form-field>
+                <div class="invalid"
+                     [hidden]="registrationForm.controls.username.valid || registrationForm.controls.username.pristine">
+                    Invalid e-mail
+                </div>
 
                 <mat-form-field>
-                    <input type="password" matInput placeholder="Password" formControlName="password">
+                    <input type="password" matInput placeholder="Password" formControlName="password" minlength="6">
                 </mat-form-field>
+                <div class="invalid"
+                     [hidden]="registrationForm.controls.password.valid || registrationForm.controls.password.pristine">
+                    Invalid password
+                </div>
+
                 <div class="button">
-                    <button mat-button mat-raised-button color="primary" [disabled]="registrationForm.invalid">
-                        Login
+                    <button mat-button mat-raised-button color="primary"
+                            [disabled]="registrationForm.invalid">
+                        Create account
                     </button>
                 </div>
             </div>

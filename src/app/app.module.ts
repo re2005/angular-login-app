@@ -8,11 +8,22 @@ import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {AuthService} from './services/auth/auth.service';
 import {RouteGuardService} from './services/route-guard/route-guard.service';
 import {RegisterComponent} from './components/register/register.component';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatToolbarModule} from '@angular/material';
+import {
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule, MatGridListModule,
+    MatIconModule,
+    MatInputModule, MatMenuModule,
+    MatSelectModule,
+    MatToolbarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ReactiveFormsModule} from '@angular/forms';
-import { UserSelectorComponent } from './components/user-selector/user-selector.component';
+import {UserSelectorComponent} from './components/user-selector/user-selector.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {CustomDropdownComponent} from './components/custom-dropdown/custom-dropdown.component';
+import {CustomDropdownItemsComponent} from './components/custom-dropdown/custom-dropdown-item.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +31,9 @@ import { UserSelectorComponent } from './components/user-selector/user-selector.
         DashboardComponent,
         LoginComponent,
         RegisterComponent,
-        UserSelectorComponent
+        UserSelectorComponent,
+        CustomDropdownComponent,
+        CustomDropdownItemsComponent
     ],
     imports: [
         ReactiveFormsModule,
@@ -33,7 +46,12 @@ import { UserSelectorComponent } from './components/user-selector/user-selector.
         MatButtonModule,
         MatInputModule,
         MatToolbarModule,
-        MatIconModule
+        MatIconModule,
+        ScrollingModule,
+        ScrollingModule,
+        MatSelectModule,
+        MatGridListModule,
+        MatMenuModule
     ],
     providers: [
         RouteGuardService,

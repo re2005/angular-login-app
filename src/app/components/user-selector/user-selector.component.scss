@@ -1,0 +1,21 @@
+
+.list {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.user {
+    //display: flex;
+    //flex-direction: row;
+}
+.name {
+    color: purple;
+}
+.username {
+    font-style: italic;
+}
+
+.remove {
+    color: purple;
+}

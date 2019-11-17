@@ -1,0 +1,12 @@
+<mat-form-field>
+    <mat-select #matSelect [(value)]="value" (selectionChange)="valueChanged($event)">
+        <mat-option [value]="0">
+            <p>Select a user</p>
+        </mat-option>
+        <mat-option [value]="ddlItem"
+                    *ngFor="let ddlItem of ddItems">
+            {{ddlItem.value.username}}
+<!--            <ng-container [ngTemplateOutlet]="ddlItem.content"></ng-container>-->
+        </mat-option>
+    </mat-select>
+</mat-form-field>

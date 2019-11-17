@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth/auth.service';
 import {Router} from '@angular/router';
@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
     registrationForm: FormGroup = new FormGroup({
         name: new FormControl('', [Validators.required]),
-        username: new FormControl('', [Validators.required]),
+        username: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required])
     });
 
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.authService.getUsersOb().subscribe(d => console.log(d));
+
     }
 
     onSubmit() {

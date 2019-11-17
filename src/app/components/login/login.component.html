@@ -1,24 +1,34 @@
 <mat-card class="forms">
+
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
-        <form [formGroup]="loginForm"
-              (ngSubmit)="onSubmit()">
-            <mat-form-field>
-                <input matInput placeholder="Username" formControlName="username" minlength="8">
-                <div [hidden]="loginForm.controls.username.valid">
-                    Invalid
-                </div>
-            </mat-form-field>
+        <form [formGroup]="loginForm">
+            <app-user-selector [users]="users"
+                               (sendRemoveUser)="removeUser($event)"
+                               (sendUsername)="setUsername($event)"></app-user-selector>
 
             <mat-form-field>
-                <input type="password" matInput placeholder="Password" formControlName="password">
+                <input type="password" matInput placeholder="Password" formControlName="password" minlength="3">
             </mat-form-field>
+            <div class="invalid" [hidden]="!authInvalid">
+                Password is invalid :/
+            </div>
             <div class="button">
-                <button mat-button mat-raised-button color="primary" [disabled]="loginForm.invalid">
+                <button mat-stroked-button color="primary"
+                        type="button"
+                        [routerLink]="['/registration']">
+                    Create an account
+                </button>
+
+                <button mat-button mat-raised-button color="primary"
+                        [disabled]="loginForm.invalid || username === 0"
+                        (click)="onSubmit()"
+                        type="submit">
                     Login
                 </button>
             </div>
-
         </form>
+
+
     </mat-card-content>
 </mat-card>

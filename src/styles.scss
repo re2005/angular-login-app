@@ -7,7 +7,9 @@ html, body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background: aqua;
+    background: #333333;
+    background: linear-gradient(145deg, #333333 0%, #474747 100%);
+
 }
 
 .forms {
@@ -28,4 +30,7 @@ body {
         justify-content: flex-end;
     }
 
+    .invalid {
+        color: red;
+    }
 }

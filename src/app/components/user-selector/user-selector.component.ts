@@ -1,15 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {IUser} from '../../interfaces/user';
 
 @Component({
-  selector: 'app-user-selector',
-  templateUrl: './user-selector.component.html',
-  styleUrls: ['./user-selector.component.scss']
+    selector: 'app-user-selector',
+    templateUrl: './user-selector.component.html',
+    styleUrls: ['./user-selector.component.scss']
 })
 export class UserSelectorComponent implements OnInit {
 
-  constructor() { }
+    @Output() sendRemoveUser = new EventEmitter<number>();
+    @Output() sendUsername = new EventEmitter<string>();
+    @Input() users: IUser[];
 
-  ngOnInit() {
-  }
+    username = 0;
 
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
+
+    public removeUser(user) {
+        this.sendRemoveUser.emit(user);
+    }
+
+    public setUsername(data) {
+        let username;
+        data === 0 ? username = 0 : username = data.value.username;
+        this.sendUsername.emit(username);
+    }
 }
