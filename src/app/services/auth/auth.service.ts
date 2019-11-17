@@ -1,8 +1,12 @@
 import {Injectable} from '@angular/core';
-import {User} from '../../interfaces/user';
+import {IUser} from '../../interfaces/user';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable()
 export class AuthService {
+
+    private usersArray = new Subject<IUser[]>();
+
     constructor() {
     }
 
@@ -14,25 +18,30 @@ export class AuthService {
         localStorage.setItem('token', Date.now().toString());
     }
 
-    public setUser(user: User): void {
-        const users = this.getUsers();
-        users.push(user);
-        this.setUsers(users);
+    public getUsersOb(): Observable<IUser[]> {
+        return this.usersArray.asObservable();
     }
 
-    public setUsers(users: Array<User>): void {
+    public setUser(user: IUser): void {
+        const users = this.getUsers() || [];
+        users.push(user);
+        this.setUsers(users);
+        this.usersArray.next(users);
+    }
+
+    public setUsers(users: Array<IUser>): void {
         localStorage.setItem('users', JSON.stringify(users));
     }
 
-    public getUsers(): Array<User> {
+    public getUsers(): Array<IUser> {
         return JSON.parse(localStorage.getItem('users'));
     }
 
     public getUser(email: string): object {
-        return this.getUsers().find(u => u.email === email);
+        return this.getUsers().find(u => u.username === email);
     }
 
     public removeUser(email: string): void {
-        this.setUsers(this.getUsers().filter(u => u.email !== email));
+        this.setUsers(this.getUsers().filter(u => u.username !== email));
     }
 }
