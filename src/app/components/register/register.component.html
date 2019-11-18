@@ -1,8 +1,7 @@
 <mat-card class="forms" [ngClass]="{'is-loading': loading}">
     <mat-card-title>Registration</mat-card-title>
     <mat-card-content>
-        <form [formGroup]="registrationForm"
-              (ngSubmit)="onSubmit()">
+        <form [formGroup]="registrationForm">
 
             <div class="spinner">
                 <mat-spinner></mat-spinner>
@@ -33,14 +32,28 @@
                     Invalid password
                 </div>
 
-                <div class="button">
+                <div class="invalid user-exist"
+                     *ngIf="error">
+                    {{error}}
+                </div>
+
+                <div class="buttons">
+                    <button mat-stroked-button color="primary"
+                            [routerLink]="['/login']"
+                            type="button">
+                        Back to login
+                    </button>
                     <button mat-button mat-raised-button color="primary"
-                            [disabled]="registrationForm.invalid">
+                            [disabled]="registrationForm.invalid"
+                            (click)="onSubmit()"
+                            type="submit">
                         Create account
                     </button>
                 </div>
-            </div>
 
+            </div>
         </form>
+
+
     </mat-card-content>
 </mat-card>

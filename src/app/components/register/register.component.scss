@@ -4,7 +4,6 @@
 }
 
 .form-fields {
-
     .is-loading & {
         opacity: .4;
     }
@@ -25,4 +24,12 @@
     .is-loading & {
         display: block;
     }
+}
+
+.user-exist {
+    margin: 10px 0;
+    background: hotpink;
+    padding: 4px 0;
+    color: white;
+    text-align: center;
 }

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth/auth.service';
 import {Router} from '@angular/router';
@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
 
     loading = false;
+    error: string;
 
     registrationForm: FormGroup = new FormGroup({
         name: new FormControl('', [Validators.required]),
@@ -19,21 +20,22 @@ export class RegisterComponent implements OnInit {
     });
 
     constructor(private authService: AuthService,
-                public router: Router) {
+                private router: Router) {
     }
 
     ngOnInit() {
-
     }
 
     onSubmit() {
-        if (this.registrationForm.valid) {
+        if (this.registrationForm.valid && !this.authService.getUser(this.registrationForm.value.username)) {
             this.loading = true;
             setTimeout(() => {
                 this.authService.setUser(this.registrationForm.value);
                 this.router.navigate(['login']);
                 this.loading = false;
             }, 1500);
+        } else {
+            this.error = 'This  user is already registered';
         }
 
     }

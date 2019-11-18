@@ -7,6 +7,10 @@ export class AuthService {
 
     private usersArray = new BehaviorSubject<IUser[]>(this.getUsers());
 
+    getToken(): string {
+        return localStorage.getItem('token');
+    }
+
     constructor() {
     }
 
@@ -15,12 +19,17 @@ export class AuthService {
         return user.password === password;
     }
 
+
     public isAuthenticated(): boolean {
-        return localStorage.getItem('token') !== null;
+        return this.getToken() !== null;
     }
 
     public setToken(username): void {
         localStorage.setItem('token', username);
+    }
+
+    public removeToken(): void {
+        localStorage.removeItem('token');
     }
 
     public getUsersOb(): Observable<IUser[]> {
@@ -50,4 +59,9 @@ export class AuthService {
     public removeUser(username: string): void {
         this.setUsers(this.getUsers().filter(u => u.username !== username));
     }
+
+    public getCurrentUser(): IUser {
+        return this.getUser(this.getToken());
+    }
+
 }

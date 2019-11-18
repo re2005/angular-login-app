@@ -24,6 +24,7 @@ import {UserSelectorComponent} from './components/user-selector/user-selector.co
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CustomDropdownComponent} from './components/custom-dropdown/custom-dropdown.component';
 import {CustomDropdownItemsComponent} from './components/custom-dropdown/custom-dropdown-item.component';
+import { LogoffComponent } from './components/logoff/logoff.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import {CustomDropdownItemsComponent} from './components/custom-dropdown/custom-
         RegisterComponent,
         UserSelectorComponent,
         CustomDropdownComponent,
-        CustomDropdownItemsComponent
+        CustomDropdownItemsComponent,
+        LogoffComponent
     ],
     imports: [
         ReactiveFormsModule,

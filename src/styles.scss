@@ -25,9 +25,10 @@ body {
         justify-content: center;
     }
 
-    .button {
+    .buttons {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
+        margin-top: 20px;
     }
 
     .invalid {
