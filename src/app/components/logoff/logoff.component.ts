@@ -13,7 +13,6 @@ export class LogoffComponent {
                 private router: Router) {
     }
 
-
     logoff() {
         this.authService.removeToken();
         this.router.navigate(['login']);

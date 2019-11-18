@@ -1,45 +1,35 @@
-<!--<mat-form-field>-->
-<!--    <mat-select placeholder="Toppings" [formControl]="toppings" multiple>-->
-<!--        <mat-select-trigger>-->
-<!--            {{toppings.value ? toppings.value[0] : ''}}-->
-<!--            <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">-->
-<!--        (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})-->
-<!--      </span>-->
-<!--        </mat-select-trigger>-->
-<!--        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>-->
-<!--    </mat-select>-->
-<!--</mat-form-field>-->
+<div class="user-selector"
+     *ngIf="isSelectOpen"
+     [@signal]="animationSignal">
 
-<!--<mat-menu #appMenu="matMenu">-->
-<!--    <div *ngFor="let user of users">-->
-<!--        <div class="list">-->
-<!--            <div class="user">-->
-<!--                <span class="name">{{user.name}}</span>-->
-<!--                <span class="username">{{user.username}}</span>-->
-<!--            </div>-->
-<!--            <span (click)="removeUser($event)" class="remove">-->
-<!--                <mat-icon>close</mat-icon>-->
-<!--            </span>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</mat-menu>-->
+    <div *ngFor="let user of users"
+         class="user-list">
 
-<!--<button mat-icon-button [matMenuTriggerFor]="appMenu">-->
-<!--    <mat-icon>more_vert</mat-icon>-->
-<!--</button>-->
-
-
-<app-custom-dropdown [addDynamicContent]="true" [(value)]="username" (valueChange)="setUsername(username)">
-    <app-custom-dropdown-item *ngFor="let user of users" [value]="user">
-        <div class="list">
-            <div class="user">
-                <span class="name">{{user.name}}</span>
-                <span class="username">{{user.username}}</span>
-            </div>
-            <span (click)="removeUser(user)" class="remove">
-                <mat-icon>close</mat-icon>
-            </span>
+        <i class="material-icons">
+            face
+        </i>
+        <div class="user"
+             (click)="setUsername(user)">
+            <span class="name">{{user.name}}</span>
+            <span class="username">{{user.username}}</span>
         </div>
-    </app-custom-dropdown-item>
-</app-custom-dropdown>
+        <span (click)="removeUser(user)" class="remove">
+            <mat-icon>close</mat-icon>
+        </span>
+    </div>
+    <div *ngIf="!users || users?.length === 0" class="user-list">
+        No users here ;( go ahead and create the first one!
+        <button mat-raised-button color="primary"
+                type="button"
+                [routerLink]="['/registration']">
+            Create
+        </button>
+    </div>
+</div>
+
+<span class="user-selector-trigger" (click)="isSelectOpen = !isSelectOpen">
+    <span *ngIf="!control.value.username">Select user</span>
+    <span *ngIf="control.value.username">{{control.value.username}}</span>
+</span>
+
 

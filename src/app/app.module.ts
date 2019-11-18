@@ -11,9 +11,11 @@ import {RegisterComponent} from './components/register/register.component';
 import {
     MatButtonModule,
     MatCardModule,
-    MatFormFieldModule, MatGridListModule,
+    MatFormFieldModule,
+    MatGridListModule,
     MatIconModule,
-    MatInputModule, MatMenuModule,
+    MatInputModule,
+    MatMenuModule,
     MatSelectModule,
     MatToolbarModule
 } from '@angular/material';
@@ -22,9 +24,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ReactiveFormsModule} from '@angular/forms';
 import {UserSelectorComponent} from './components/user-selector/user-selector.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {CustomDropdownComponent} from './components/custom-dropdown/custom-dropdown.component';
-import {CustomDropdownItemsComponent} from './components/custom-dropdown/custom-dropdown-item.component';
-import { LogoffComponent } from './components/logoff/logoff.component';
+import {LogoffComponent} from './components/logoff/logoff.component';
 
 @NgModule({
     declarations: [
@@ -33,8 +33,6 @@ import { LogoffComponent } from './components/logoff/logoff.component';
         LoginComponent,
         RegisterComponent,
         UserSelectorComponent,
-        CustomDropdownComponent,
-        CustomDropdownItemsComponent,
         LogoffComponent
     ],
     imports: [

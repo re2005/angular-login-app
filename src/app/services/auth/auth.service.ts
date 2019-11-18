@@ -11,14 +11,10 @@ export class AuthService {
         return localStorage.getItem('token');
     }
 
-    constructor() {
-    }
-
     public isPasswordValid(username, password) {
         const user = this.getUser(username);
         return user.password === password;
     }
-
 
     public isAuthenticated(): boolean {
         return this.getToken() !== null;
@@ -53,6 +49,9 @@ export class AuthService {
     }
 
     public getUser(username: string): IUser {
+        if (!this.getUsers()) {
+            return;
+        }
         return this.getUsers().find(u => u.username === username);
     }
 
@@ -63,5 +62,4 @@ export class AuthService {
     public getCurrentUser(): IUser {
         return this.getUser(this.getToken());
     }
-
 }
