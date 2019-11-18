@@ -1,5 +1,11 @@
 # AngularLoginApp
 
+
+
+[![Build Status](https://travis-ci.com/re2005/angular-login-app.svg?branch=master)](https://travis-ci.com/re2005/weather-app)
+
+[DEMO](https://re2005.github.io/angular-login-app/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.1.
 
 ## Development server
